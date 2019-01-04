@@ -1,4 +1,4 @@
-package com.arcansecurity.skeerel.util;
+package com.arcansecurity.skeerel.data.address;
 
 import com.arcansecurity.skeerel.util.json.JSONObject;
 
@@ -16,6 +16,14 @@ public class Country {
     private Country(String alpha2, String name) {
         this.alpha2 = alpha2;
         this.name = name;
+    }
+
+    public String getAlpha2() {
+        return alpha2;
+    }
+
+    public String getName() {
+        return name;
     }
 
     @Override

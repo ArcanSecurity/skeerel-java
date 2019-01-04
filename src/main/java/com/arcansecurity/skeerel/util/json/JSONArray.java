@@ -19,6 +19,7 @@ package com.arcansecurity.skeerel.util.json;
 import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.LinkedList;
 import java.util.List;
 
 // Note: this class was written without inspecting the non-free org.json sourcecode.
@@ -53,7 +54,7 @@ public class JSONArray {
      * Creates a {@code JSONArray} with no values.
      */
     public JSONArray() {
-        values = new ArrayList<Object>();
+        values = new LinkedList<Object>();
     }
 
     /**

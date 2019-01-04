@@ -529,7 +529,7 @@ public class JSONObject {
      * @param fallback The value to return if the field isn't there.
      * @return The selected value or the fallback.
      */
-    public boolean optBoolean(String name, boolean fallback) {
+    public boolean optBoolean(String name, Boolean fallback) {
         Object object = opt(name);
         Boolean result = JSON.toBoolean(object);
         return result != null ? result : fallback;
@@ -615,7 +615,7 @@ public class JSONObject {
      * @param fallback The value to return if the field isn't there.
      * @return The selected value or the fallback.
      */
-    public int optInt(String name, int fallback) {
+    public int optInt(String name, Integer fallback) {
         Object object = opt(name);
         Integer result = JSON.toInteger(object);
         return result != null ? result : fallback;
@@ -665,7 +665,7 @@ public class JSONObject {
      * @param fallback The value to return if the field isn't there.
      * @return The selected value or the fallback.
      */
-    public long optLong(String name, long fallback) {
+    public long optLong(String name, Long fallback) {
         Object object = opt(name);
         Long result = JSON.toLong(object);
         return result != null ? result : fallback;
