@@ -7,6 +7,9 @@ import java.util.LinkedList;
 public class DeliveryMethods extends LinkedList<DeliveryMethod> {
 
     public JSONArray toJson() {
-        return new JSONArray(this);
+        JSONArray array = new JSONArray();
+        forEach(deliveryMethod -> array.put(deliveryMethod.toJson()));
+
+        return array;
     }
 }

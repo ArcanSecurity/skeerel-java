@@ -34,7 +34,7 @@ public abstract class BaseAddress {
         addressLine3 = json.optString("address_line_3", null);
         zipCode = json.optString("zip_code", null);
         city = json.optString("city", null);
-        country = Country.fromAlpha2(json.optString("country_code"));
+        country = Country.fromAlpha2(json.optString("country_code", null));
 
         String phone = json.optString("phone_number");
         this.phone = VALID_PHONE_REGEX.matcher(phone).find() ? phone : null;

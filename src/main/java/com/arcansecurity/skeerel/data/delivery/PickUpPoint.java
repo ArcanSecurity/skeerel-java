@@ -23,7 +23,7 @@ public class PickUpPoint {
 
     private Color deliveryTextColor;
 
-    private long price;
+    private Long price;
 
     private Color priceTextColor;
 
@@ -63,7 +63,25 @@ public class PickUpPoint {
         this.deliveryTextColor = deliveryTextColor;
     }
 
-    public void setPrice(long price) {
+    public void setPrice(Integer price) {
+        if (price == null) {
+            this.price = null;
+            return ;
+        }
+
+        setPrice(Long.valueOf(price));
+    }
+
+    public void setPrice(Long price) {
+        if (price == null) {
+            this.price = null;
+            return ;
+        }
+
+        if (price < 0) {
+            throw new IllegalArgumentException("Cannot set a price lower than 0");
+        }
+
         this.price = price;
     }
 
@@ -92,7 +110,7 @@ public class PickUpPoint {
             }
         }
 
-        if (price > 0) {
+        if (price != null && price > 0) {
             json.put("price", price);
             if (priceTextColor != null) {
                 json.put("price_text_color", deliveryTextColor.toString().toLowerCase());

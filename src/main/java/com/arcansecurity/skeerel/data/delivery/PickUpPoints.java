@@ -7,6 +7,9 @@ import java.util.LinkedList;
 public class PickUpPoints extends LinkedList<PickUpPoint> {
 
     public JSONArray toJson() {
-        return new JSONArray(this);
+        JSONArray array = new JSONArray();
+        forEach(pickUpPoint -> array.put(pickUpPoint.toJson()));
+
+        return array;
     }
 }

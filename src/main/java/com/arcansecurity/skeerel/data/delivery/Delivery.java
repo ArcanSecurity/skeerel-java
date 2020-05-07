@@ -1,9 +1,6 @@
 package com.arcansecurity.skeerel.data.delivery;
 
 import com.arcansecurity.skeerel.data.address.BaseAddress;
-import com.arcansecurity.skeerel.data.payment.Currency;
-import com.arcansecurity.skeerel.data.payment.FraudRisk;
-import com.arcansecurity.skeerel.data.payment.ReasonNotCaptured;
 import com.arcansecurity.skeerel.util.json.JSONObject;
 
 public final class Delivery {

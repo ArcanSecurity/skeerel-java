@@ -38,6 +38,15 @@ public class DeliveryMethod {
         this.deliveryTextContent = deliveryTextContent;
     }
 
+    public void setPrice(Integer price) {
+        if (price == null) {
+            this.price = null;
+            return ;
+        }
+
+        setPrice(Long.valueOf(price));
+    }
+
     public void setPrice(Long price) {
         if (price == null) {
             this.price = null;
@@ -70,7 +79,7 @@ public class DeliveryMethod {
 
         JSONObject json = new JSONObject();
         json.put("id", id)
-                .put("type", type)
+                .put("type", type.toString())
                 .put("primary", primary)
                 .put("name", name)
                 .put("delivery_text_content", deliveryTextContent)

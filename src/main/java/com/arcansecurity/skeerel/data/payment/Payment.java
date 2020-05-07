@@ -1,100 +1,187 @@
 package com.arcansecurity.skeerel.data.payment;
 
-import com.arcansecurity.skeerel.data.address.BaseAddress;
 import com.arcansecurity.skeerel.util.json.JSONObject;
+
+import java.time.ZonedDateTime;
+import java.util.UUID;
 
 public final class Payment {
 
-    private final String id;
+    private UUID id;
 
-    private final Boolean live;
+    private ZonedDateTime date;
 
-    private final Long amount;
+    private UUID profileId;
 
-    private final Currency currency;
+    private Long amount;
 
-    private final Boolean captured;
+    private Currency currency;
 
-    private final ReasonNotCaptured reasonNotCaptured;
+    private Status status;
 
-    private final FraudRisk fraudRisk;
+    private Boolean live;
 
-    private final BaseAddress billingAddress;
+    private Boolean captured;
 
-    private final Integer paymentErrorCode;
+    private ZonedDateTime dateCaptured;
 
-    private final String paymentErrorMessage;
+    private Boolean refunded;
+
+    private ZonedDateTime dateRefunded;
+
+    private Boolean reviewed;
+
+    private ZonedDateTime dateReviewed;
 
     public Payment(JSONObject json) {
         if (null == json) {
             throw new IllegalArgumentException("payment object cannot be null");
         }
 
-        id = json.optString("id", null);
-        live = json.optBoolean("live", null);
+        id = UUID.fromString(json.optString("id", null));
+        date = ZonedDateTime.parse(json.optString("date", null));
+        profileId = UUID.fromString(json.optString("profile_id", null));
         amount = json.optLong("amount", null);
-        currency = Currency.fromString(json.optString("currency"));
+        currency = Currency.fromString(json.optString("currency", null));
+        status = Status.fromString(json.optString("status", null));
+        live = json.optBoolean("live", null);
         captured = json.optBoolean("captured", null);
-        reasonNotCaptured = ReasonNotCaptured.fromString(json.optString("reason_not_captured"));
-        fraudRisk = FraudRisk.fromString(json.optString("fraud_risk"));
-        billingAddress = BaseAddress.build(json.optJSONObject("billing_address"));
-        paymentErrorCode = json.optInt("payment_error_code", null);
-        paymentErrorMessage = json.optString("id", null);
+        refunded = json.optBoolean("refunded", null);
+        reviewed = json.optBoolean("reviewed", null);
+
+        if (!json.isNull("date_captured")) {
+            dateCaptured = ZonedDateTime.parse(json.optString("date_captured"));
+        }
+
+        if (!json.isNull("date_refunded")) {
+            dateRefunded = ZonedDateTime.parse(json.optString("date_refunded"));
+        }
+
+        if (!json.isNull("date_reviewed")) {
+            dateReviewed = ZonedDateTime.parse(json.optString("date_reviewed"));
+        }
     }
 
-    public String getId() {
+    public UUID getId() {
         return id;
     }
 
-    public Boolean getLive() {
-        return live;
+    public void setId(UUID id) {
+        this.id = id;
+    }
+
+    public ZonedDateTime getDate() {
+        return date;
+    }
+
+    public void setDate(ZonedDateTime date) {
+        this.date = date;
+    }
+
+    public UUID getProfileId() {
+        return profileId;
+    }
+
+    public void setProfileId(UUID profileId) {
+        this.profileId = profileId;
     }
 
     public Long getAmount() {
         return amount;
     }
 
+    public void setAmount(Long amount) {
+        this.amount = amount;
+    }
+
     public Currency getCurrency() {
         return currency;
+    }
+
+    public void setCurrency(Currency currency) {
+        this.currency = currency;
+    }
+
+    public Status getStatus() {
+        return status;
+    }
+
+    public void setStatus(Status status) {
+        this.status = status;
+    }
+
+    public Boolean getLive() {
+        return live;
+    }
+
+    public void setLive(Boolean live) {
+        this.live = live;
     }
 
     public Boolean getCaptured() {
         return captured;
     }
 
-    public ReasonNotCaptured getReasonNotCaptured() {
-        return reasonNotCaptured;
+    public void setCaptured(Boolean captured) {
+        this.captured = captured;
     }
 
-    public FraudRisk getFraudRisk() {
-        return fraudRisk;
+    public ZonedDateTime getDateCaptured() {
+        return dateCaptured;
     }
 
-    public BaseAddress getBillingAddress() {
-        return billingAddress;
+    public void setDateCaptured(ZonedDateTime dateCaptured) {
+        this.dateCaptured = dateCaptured;
     }
 
-    public Integer getPaymentErrorCode() {
-        return paymentErrorCode;
+    public Boolean getRefunded() {
+        return refunded;
     }
 
-    public String getPaymentErrorMessage() {
-        return paymentErrorMessage;
+    public void setRefunded(Boolean refunded) {
+        this.refunded = refunded;
+    }
+
+    public ZonedDateTime getDateRefunded() {
+        return dateRefunded;
+    }
+
+    public void setDateRefunded(ZonedDateTime dateRefunded) {
+        this.dateRefunded = dateRefunded;
+    }
+
+    public Boolean getReviewed() {
+        return reviewed;
+    }
+
+    public void setReviewed(Boolean reviewed) {
+        this.reviewed = reviewed;
+    }
+
+    public ZonedDateTime getDateReviewed() {
+        return dateReviewed;
+    }
+
+    public void setDateReviewed(ZonedDateTime dateReviewed) {
+        this.dateReviewed = dateReviewed;
     }
 
     @Override
     public String toString() {
         return "Payment{" +
-                "id='" + id + '\'' +
-                ", live=" + live +
+                "id=" + id +
+                ", date=" + date +
+                ", profileId=" + profileId +
                 ", amount=" + amount +
                 ", currency=" + currency +
+                ", status=" + status +
+                ", live=" + live +
                 ", captured=" + captured +
-                ", reasonNotCaptured=" + reasonNotCaptured +
-                ", fraudRisk=" + fraudRisk +
-                ", billingAddress=" + billingAddress +
-                ", paymentErrorCode=" + paymentErrorCode +
-                ", paymentErrorMessage='" + paymentErrorMessage + '\'' +
+                ", dateCaptured=" + dateCaptured +
+                ", refunded=" + refunded +
+                ", dateRefunded=" + dateRefunded +
+                ", reviewed=" + reviewed +
+                ", dateReviewed=" + dateReviewed +
                 '}';
     }
 }
