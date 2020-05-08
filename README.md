@@ -22,7 +22,7 @@ Add this dependency to your project's POM:
 
 ```xml
 <dependency>
-  <groupId>com.arcansecurity.skeerle</groupId>
+  <groupId>com.arcansecurity.skeerel</groupId>
   <artifactId>skeerel-java</artifactId>
   <version>2.0.0</version>
 </dependency>
