@@ -11,6 +11,3 @@ fi
 
 mvn versions:set -DnewVersion="${VERSION}" -DgenerateBackupPoms=false
 mvn clean deploy -B -P release --settings "${DIR}"/settings.xml
-git checkout .
-git tag "$VERSION"
-git push tags
