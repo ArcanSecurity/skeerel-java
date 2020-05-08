@@ -176,7 +176,6 @@ public class Skeerel {
         JSONObject json;
         try {
             json = Request.getJson(API_BASE + path, parameters);
-            System.out.println(json);
         } catch (Exception e) {
             throw new SkeerelException("An exception has occurred while making the request to the API", e);
         }
