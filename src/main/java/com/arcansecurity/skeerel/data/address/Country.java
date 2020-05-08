@@ -32,10 +32,15 @@ public class Country {
     }
 
     public static Country fromAlpha2(String alpha2) {
-        if (null == alpha2 || 2 != alpha2.length() || !FROM_ALPHA_2_JSON.has(alpha2)) {
+        if (null == alpha2) {
             return null;
         }
 
-        return new Country(alpha2, FROM_ALPHA_2_JSON.getString(alpha2));
+        String alpha2UpperCase = alpha2.toUpperCase();
+        if (2 != alpha2UpperCase.length() || !FROM_ALPHA_2_JSON.has(alpha2UpperCase)) {
+            throw new IllegalArgumentException("Incorrect country code: " + alpha2UpperCase);
+        }
+
+        return new Country(alpha2UpperCase, FROM_ALPHA_2_JSON.getString(alpha2UpperCase));
     }
 }
