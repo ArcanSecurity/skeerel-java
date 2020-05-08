@@ -295,7 +295,9 @@ public class Main {
 
 # Sample App
 
-TODO
+If you'd like to see an example of this library in action, 
+check out the Skeerel JAVA sample application 
+[here](https://github.com/ArcanSecurity/skeerel-sample-java).
  
 # Resources
 Check out the [API documentation](http://doc.skeerel.com).  
