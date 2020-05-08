@@ -91,4 +91,16 @@ public final class Website {
     public void setDomains(List<String> domains) {
         this.domains = domains;
     }
+
+    @Override
+    public String toString() {
+        return "Website{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", image='" + image + '\'' +
+                ", url='" + url + '\'' +
+                ", status=" + status +
+                ", domains=" + domains +
+                '}';
+    }
 }
