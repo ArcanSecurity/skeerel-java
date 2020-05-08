@@ -15,6 +15,8 @@ public final class Payment {
 
     private Long amount;
 
+    private Long amountRefunded;
+
     private Currency currency;
 
     private Status status;
@@ -42,6 +44,7 @@ public final class Payment {
         date = ZonedDateTime.parse(json.optString("date", null));
         profileId = UUID.fromString(json.optString("profile_id", null));
         amount = json.optLong("amount", null);
+        amountRefunded = json.optLong("amount_refunded", null);
         currency = Currency.fromString(json.optString("currency", null));
         status = Status.fromString(json.optString("status", null));
         live = json.optBoolean("live", null);
@@ -92,6 +95,14 @@ public final class Payment {
 
     public void setAmount(Long amount) {
         this.amount = amount;
+    }
+
+    public Long getAmountRefunded() {
+        return amountRefunded;
+    }
+
+    public void setAmountRefunded(Long amountRefunded) {
+        this.amountRefunded = amountRefunded;
     }
 
     public Currency getCurrency() {
@@ -173,6 +184,7 @@ public final class Payment {
                 ", date=" + date +
                 ", profileId=" + profileId +
                 ", amount=" + amount +
+                ", amountRefunded=" + amountRefunded +
                 ", currency=" + currency +
                 ", status=" + status +
                 ", live=" + live +

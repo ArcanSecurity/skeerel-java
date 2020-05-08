@@ -30,6 +30,8 @@ import java.util.TreeMap;
 
 // Note: this class was written without inspecting the non-free org.json sourcecode.
 
+// Note 2: this class was slightly modified to return Long, Double, Boolean instead of native types for opt methods
+
 /**
  * A modifiable set of name/value mappings. Names are unique, non-null strings.
  * Values may be any mix of {@link JSONObject JSONObjects}, {@link JSONArray
@@ -517,7 +519,7 @@ public class JSONObject {
      * @param name The name of the field we want.
      * @return The selected value if it exists.
      */
-    public boolean optBoolean(String name) {
+    public Boolean optBoolean(String name) {
         return optBoolean(name, false);
     }
 
@@ -529,7 +531,7 @@ public class JSONObject {
      * @param fallback The value to return if the field isn't there.
      * @return The selected value or the fallback.
      */
-    public boolean optBoolean(String name, Boolean fallback) {
+    public Boolean optBoolean(String name, Boolean fallback) {
         Object object = opt(name);
         Boolean result = JSON.toBoolean(object);
         return result != null ? result : fallback;
@@ -560,7 +562,7 @@ public class JSONObject {
      * @param name The name of the field we want.
      * @return The selected value if it exists.
      */
-    public double optDouble(String name) {
+    public Double optDouble(String name) {
         return optDouble(name, Double.NaN);
     }
 
@@ -572,7 +574,7 @@ public class JSONObject {
      * @param fallback The value to return if the field isn't there.
      * @return The selected value or the fallback.
      */
-    public double optDouble(String name, double fallback) {
+    public Double optDouble(String name, double fallback) {
         Object object = opt(name);
         Double result = JSON.toDouble(object);
         return result != null ? result : fallback;
@@ -603,7 +605,7 @@ public class JSONObject {
      * @param name The name of the field we want.
      * @return The selected value if it exists.
      */
-    public int optInt(String name) {
+    public Integer optInt(String name) {
         return optInt(name, 0);
     }
 
@@ -615,7 +617,7 @@ public class JSONObject {
      * @param fallback The value to return if the field isn't there.
      * @return The selected value or the fallback.
      */
-    public int optInt(String name, Integer fallback) {
+    public Integer optInt(String name, Integer fallback) {
         Object object = opt(name);
         Integer result = JSON.toInteger(object);
         return result != null ? result : fallback;
@@ -651,7 +653,7 @@ public class JSONObject {
      * @param name The name of the field we want.
      * @return The selected value.
      */
-    public long optLong(String name) {
+    public Long optLong(String name) {
         return optLong(name, 0L);
     }
 
@@ -665,7 +667,7 @@ public class JSONObject {
      * @param fallback The value to return if the field isn't there.
      * @return The selected value or the fallback.
      */
-    public long optLong(String name, Long fallback) {
+    public Long optLong(String name, Long fallback) {
         Object object = opt(name);
         Long result = JSON.toLong(object);
         return result != null ? result : fallback;

@@ -25,7 +25,12 @@ public final class Request {
         con.setRequestMethod("GET");
         con.getResponseCode();
 
-        BufferedReader in = new BufferedReader(new InputStreamReader(con.getInputStream()));
+        BufferedReader in;
+        if (con.getResponseCode() >= 200 && con.getResponseCode() < 300) {
+            in = new BufferedReader(new InputStreamReader(con.getInputStream()));
+        } else {
+            in = new BufferedReader(new InputStreamReader(con.getErrorStream()));
+        }
         StringBuilder response = new StringBuilder();
 
         for (String inputLine; (inputLine = in.readLine()) != null; ) {
