@@ -7,8 +7,9 @@
     <groupId>com.arcansecurity.skeerel</groupId>
     <artifactId>skeerel-java</artifactId>
     <packaging>jar</packaging>
-    <version>2.0.0-SNAPSHOT</version>
+    <version>2.0.0</version>
     <name>Skeerel JAVA Library</name>
+    <description>A Java library for the Skeerel API https://doc.skeerel.com</description>
     <url>https://skeerel.com</url>
 
     <organization>
@@ -28,6 +29,20 @@
             <distribution>repo</distribution>
         </license>
     </licenses>
+
+    <developers>
+        <developer>
+            <id>ArcanSecurity</id>
+            <name>ArcanSecurity Team</name>
+            <email>support@arcansecurity.com</email>
+            <organization>ArcanSecurity</organization>
+            <organizationUrl>https://arcansecurity.com</organizationUrl>
+
+            <properties>
+                <picUrl>https://avatars3.githubusercontent.com/u/31310190</picUrl>
+            </properties>
+        </developer>
+    </developers>
 
     <scm>
         <connection>scm:git:git://github.com/ArcanSecurity/skeerel-java.git</connection>

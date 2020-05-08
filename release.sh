@@ -1,7 +1,5 @@
 #!/bin/bash -e
 
-DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
-
 export VERSION=$1
 
 if [[ -z "$VERSION" ]]; then
@@ -10,4 +8,4 @@ if [[ -z "$VERSION" ]]; then
 fi
 
 mvn versions:set -DnewVersion="${VERSION}" -DgenerateBackupPoms=false
-mvn clean deploy -B -P release --settings "${DIR}"/settings.xml
+mvn clean deploy -B -P release
